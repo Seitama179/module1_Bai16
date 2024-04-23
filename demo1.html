@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // function Person(firstName, lastName) {
+    //     this.firstName = firstName;
+    //     this.lastName = lastName;
+    //     this.showName = function() {
+    //         console.log(this.firstName + " " + this.lastName);
+    //     };
+    // }
+    //
+    // var psn1 = new Person("Ngoc", "To");
+    //
+    // // các property khai báo vào biến this có thể bị truy xuất từ bên ngoài
+    // // object không có bao đóng
+    // psn1.firstName = "changed";
+    // console.log(ps1.firstName); // changed
+
+
+    function Person(firstName, lastName) {
+        let fstName = firstName;
+        let lstName = lastName;
+        //sử dụng biến cục bộ để đảm bảo tính bao đóng:
+        this.setFirstName = function(firstName) {
+            fstName = firstName;
+        };
+
+        this.getFirstName = function() {
+            return fstName;
+        };
+
+        this.setLastName = function(lastName) {
+            lstName = lastName;
+        };
+
+        this.getLastName = function() {
+            return lstName;
+        };
+    }
+    let person1 = new Person("Ngoc", "To");
+    //console.log(person1.fstName); // Undefined, không thể truy cập được vì fstName là biến cục bộ
+    console.log(person1.getFirstName()); // Ngoc
+    console.log(person1.getLastName()); // To
+    person1.setLastName("Nguyen"); 
+    console.log(person1.getLastName()); // Nguyen
+</script>
+</body>
+</html>
